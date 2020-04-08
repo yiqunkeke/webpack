@@ -32,6 +32,7 @@ import Content from './content.js';
 */
 
 // 4. CommonJS 模块引入方式
+/*
 var Header = require('./header.js');
 var Sidebar = require('./sidebar.js');
 var Content = require('./content.js');
@@ -39,3 +40,20 @@ var Content = require('./content.js');
 new Header();
 new Sidebar();
 new Content();
+*/
+
+// 5. Loader
+// 使用 CommonJS 模块方式引入
+/*
+var avatar = require('./avatar.jpg');
+console.log(avatar);
+*/
+
+// 使用 ES module 方式引入模块
+import avatar from './avatar.jpg';
+var img = new Image(); // 创建 <img>元素
+img.src = avatar; // 指定<img> 元素的src
+
+var root = document.getElementById('root');
+root.append(img);
+

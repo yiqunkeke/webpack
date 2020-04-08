@@ -18,5 +18,11 @@ module.exports = {
         // path: 打包出的文件要放置到哪个文件夹下，path 必须是一个绝对路径
         // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
         path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [{
+            test: /\.jpg$/,
+            use: 'file-loader'
+        }]
     }
 }
