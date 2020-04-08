@@ -19,10 +19,24 @@ module.exports = {
         // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
         path: path.resolve(__dirname, 'dist')
     },
+    // 非 js 模块打包配置
     module: {
-        rules: [{
-            test: /\.jpg$/,
-            use: 'file-loader'
-        }]
+        rules: [
+            // 图片文件
+            {
+                test: /\.(jpg|png|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            // placeholders 占位符
+                            name: '[name]_[hash].[ext]',
+                            // 把打包后的文件放到 dist/images/文件夹中
+                            outputPath: 'images/'
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }
