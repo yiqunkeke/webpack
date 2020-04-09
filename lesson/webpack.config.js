@@ -27,12 +27,13 @@ module.exports = {
                 test: /\.(jpg|png|gif)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
                             // placeholders 占位符
                             name: '[name]_[hash].[ext]',
                             // 把打包后的文件放到 dist/images/文件夹中
-                            outputPath: 'images/'
+                            outputPath: 'images/',
+                            limit: 10240 // 10kb
                         }
                     }
                 ]
