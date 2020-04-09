@@ -51,8 +51,12 @@ console.log(avatar);
 
 // 使用 ES module 方式引入模块
 import avatar from './avatar.jpg';
+// import './index.css';
+import './index.scss';
+
 var img = new Image(); // 创建 <img>元素
 img.src = avatar; // 指定<img> 元素的src
+img.classList.add('avatar');
 
 var root = document.getElementById('root');
 root.append(img);

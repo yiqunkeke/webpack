@@ -37,6 +37,16 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            // css文件
+            // {
+            //     test: /\.css$/,
+            //     use: ['style-loader', 'css-loader']
+            // },
+            // scss 文件
+            {
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             }
         ]
     }
