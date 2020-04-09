@@ -48,10 +48,13 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
-                    'css-loader',
-                    // 设置 postcss.config.js后，将 postcss 加载器添加到 webpack.config.js。
-                    // 您可以单独使用它，也可以与css加载器一起使用（推荐）。
-                    // 在css-loader和style-loader之后使用它，但在其他预处理器加载器（例如sass | less | stylus-loader）之前使用它（如果您使用的话）。
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 2,
+                            modules: true
+                        }
+                    },
                     'postcss-loader',
                     'sass-loader'
                     ]
