@@ -1,0 +1,24 @@
+@font-face {font-family: "iconfont";
+    src: url('./font/iconfont.eot?t=1586495624304'); /* IE9 */
+    src: url('./font/iconfont.eot?t=1586495624304#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOYAAsAAAAAB5gAAANLAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCfgqDAIJiATYCJAMMCwgABCAFhG0HPRunBsguIScbV0QiiJ7b9JGyPPLD7b01QIXDXCP4GuO37+6+iCbRptEcUZlOhCYamlimESnJp3sJ/GSX/ybxXoyJdCojeGazt+CpC6vU+WApl5Aqu0sVaMY9Uh44dYHMBjKSNeBCWfIWYNiop5NTuEeQWwlE9HUPk2oV3WprF4fTxtLA5gPlMsfkqAswDiigsRdZAWWJecPYVUtp0OsJ1BpUDK02tvdDkAJ3C8Rtjp2BoJRaqckN1UJlydginkOF6vTA5x7gmf/5+Ic9qkkqMtx3/9WGeaj+eZ//+tritIsAznhGyJPImAIKcbTUvJ9vGJ7iq9YM+xkC62oW/Pyt5+e57NX+4RESUQln14MxqEzOiMPETo0DL5BABpWowx3gFcS2n14tNzSU0lBfarqtv+az4xzDPLyA0L2LeU3vzoO76eSkfJiBukso/eb6+cRU/762tSn08w48Y/+LHnwp8fdnHy0+Xn+69EQf2Ni752B2/fvD+/bHHzuUc9iE6tQdPTDa+KaBa8RRw01l5d8dYJruUgpSLiXjJB/igMmNhUtYxV3kIi4tVVH/Th2MnoQ6dSdH6hAxjowgzzkyet1a7REcZT20Z7BnAFb9wgd1/w8vnv91kyi8tHn0zxerPUcDNtm6j9uNRtGI2zMKGKICjcBCt3u0/F1/X3gYE77zCWHhFpiGO+ajPi8A8jz//tJ3fNSeianw8oMq4Edl3EfKop0VVN+HJfgnnJYlxeJhTS4Gm7GdWLYp6K5Vai2b/7C91ev+0o7WRELaEUNSZQCyakPIgp2CCnVmoFK1Bag1qWlynTYaX1FqMGENQGh2ApJGnyBrdh9ZsK+gQqdfUKk5MtQ6GtFz1hmJG0ydRmYMMo9nvZibkyVKdQYT5PYS1inMaEmeTxokms75sM1szcaaiES0MQboLtZuGBRTTRZxI9iMCIKMFU12kDnDvGAYSqnFQsteZJ6TRWCs0BAzDMQ8bJYXxpkjk1C3soHJvb8XwXISzNBqipr0gwiNjqsdszGztkA2iaVWRddyic6FZWcwUBilkYmwRmAkBBKWYUp5KwdijsFsoUdQUcqCytG2YvP8UvH5VkEtPFeOFDmKfEEQQmedus5JhKeUiDMSAAA=') format('woff2'),
+    url('./font/iconfont.woff?t=1586495624304') format('woff'),
+    url('./font/iconfont.ttf?t=1586495624304') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url('./font/iconfont.svg?t=1586495624304#iconfont') format('svg'); /* iOS 4.1- */
+  }
+  
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-all:before {
+    content: "\e6ef";
+  }
+  
+  .icon-bussiness-man:before {
+    content: "\e6f0";
+  }

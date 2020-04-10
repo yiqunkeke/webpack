@@ -51,13 +51,21 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 2,
-                            modules: true
+                            // 0 => 无 loader(默认); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+                            importLoaders: 2, // 在 css-loader 前应用的 loader 的数量
+                            modules: false // 开启/关闭 css modules
                         }
                     },
                     'postcss-loader',
                     'sass-loader'
                     ]
+            },
+            // 字体文件
+            {
+                test: /\.(eot|ttf|svg|woff)$/,
+                use: {
+                    loader: 'file-loader'
+                }
             }
         ]
     }

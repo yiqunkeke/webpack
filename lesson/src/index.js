@@ -49,7 +49,8 @@ var avatar = require('./avatar.jpg');
 console.log(avatar);
 */
 
-// 使用 ES module 方式引入模块
+// 6. 使用 ES module 方式引入模块
+/*
 import avatar from './avatar.jpg';
 // import './index.css';
 // import './index.scss'; // 全局引入
@@ -66,4 +67,11 @@ img.classList.add(style.avatar);
 
 var root = document.getElementById('root');
 root.append(img);
+*/
 
+// 7. 打包字体文件
+
+import './font.scss';
+
+var root = document.getElementById('root');
+root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
