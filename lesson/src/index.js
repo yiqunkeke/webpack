@@ -31,7 +31,7 @@ import Sidebar from './sidebar.js';
 import Content from './content.js';
 */
 
-// 4. CommonJS 模块引入方式
+// CommonJS 模块引入方式
 /*
 var Header = require('./header.js');
 var Sidebar = require('./sidebar.js');
@@ -49,12 +49,12 @@ var avatar = require('./avatar.jpg');
 console.log(avatar);
 */
 
-// 6. 使用 ES module 方式引入模块
+// 使用 ES module 方式引入模块
 /*
 import avatar from './avatar.jpg';
 // import './index.css';
 // import './index.scss'; // 全局引入
-import style from './index.scss'; // 模块化
+import style from './index.scss'; // CSS Modules-- CSS 模块化引入
 import createAvatar from './createAvatar.js';
 
 createAvatar();

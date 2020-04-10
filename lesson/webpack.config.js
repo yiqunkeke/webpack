@@ -1,6 +1,8 @@
 /** 这些配置都是 webpack 提供给我们的配置接口
  */
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     // mode 的默认值就是 production
@@ -12,12 +14,6 @@ module.exports = {
     // entry: './src/index.js',
     entry: {
         main: './src/index.js'
-    },
-    output: {
-        filename: 'bundle.js', // 打包后生成的文件名
-        // path: 打包出的文件要放置到哪个文件夹下，path 必须是一个绝对路径
-        // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
-        path: path.resolve(__dirname, 'dist')
     },
     // 非 js 模块打包配置
     module: {
@@ -68,5 +64,17 @@ module.exports = {
                 }
             }
         ]
+    },
+    plugins: [ 
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        }),
+        new CleanWebpackPlugin()
+    ],
+    output: {
+        filename: 'bundle.js', // 打包后生成的文件名
+        // path: 打包出的文件要放置到哪个文件夹下，path 必须是一个绝对路径
+        // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
+        path: path.resolve(__dirname, 'dist')
     }
 }
