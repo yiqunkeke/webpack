@@ -73,6 +73,7 @@ module.exports = {
         new CleanWebpackPlugin()
     ],
     output: {
+        publicPath: 'http://cdn.com.cn',
         filename: '[name].js', // 打包后生成的文件名
         // path: 打包出的文件要放置到哪个文件夹下，path 必须是一个绝对路径
         // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
