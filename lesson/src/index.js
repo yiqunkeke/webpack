@@ -70,8 +70,11 @@ root.append(img);
 */
 
 // 7. 打包字体文件
-
+/*
 import './font.scss';
-
 var root = document.getElementById('root');
 root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
+*/
+
+// 8. sourceMap
+consele.log('hello world');

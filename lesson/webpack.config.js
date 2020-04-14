@@ -10,11 +10,12 @@ module.exports = {
     // 如果设置mode 为 production,则打包出的文件就会被压缩成一行。
     // 设置mode 为 development，则打包出来的文件就不会被压缩。
     mode: 'development',
+    devtool: 'cheap-module-eval-source-map', // none source-map inline-source-map cheap-source-map cheap-module-source-map...
     // 项目要从哪个文件开始打包
     // entry: './src/index.js',
     entry: {
-        main: './src/index.js',
-        sub: './src/index.js'
+        main: './src/index.js'
+        // sub: './src/index.js'
     },
     // 非 js 模块打包配置
     module: {
@@ -73,10 +74,12 @@ module.exports = {
         new CleanWebpackPlugin()
     ],
     output: {
-        publicPath: 'http://cdn.com.cn',
-        filename: '[name].js', // 打包后生成的文件名
+        // publicPath: 'http://cdn.com.cn/',
+        filename: '[name].js',
+        // filename: 'js/[name]/[chunkhash:16]_bundle.js', // 打包后生成的文件名
         // path: 打包出的文件要放置到哪个文件夹下，path 必须是一个绝对路径
         // 所以需要引入 node.js 中 path 模块并调用模块的 resolve()方法来得到一个绝对路径
         path: path.resolve(__dirname, 'dist')
+        // hashDigestLength: 20
     }
 }
