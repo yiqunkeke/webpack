@@ -17,6 +17,10 @@ module.exports = {
         main: './src/index.js'
         // sub: './src/index.js'
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        open: true
+    },
     // 非 js 模块打包配置
     module: {
         rules: [

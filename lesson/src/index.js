@@ -76,5 +76,5 @@ var root = document.getElementById('root');
 root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 */
 
-// 8. sourceMap
-consele.log('hello world');
+// 8. sourceMap、webpack --watch、webpackDevServer
+console.log('hello world!');
