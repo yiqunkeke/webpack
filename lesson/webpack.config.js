@@ -18,7 +18,7 @@ module.exports = {
         // sub: './src/index.js'
     },
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'dist'), // contentBase 表示服务器启在哪个文件夹下
         open: true
     },
     // 非 js 模块打包配置

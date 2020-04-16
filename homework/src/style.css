@@ -1,0 +1,19 @@
+/*声明字体*/
+@font-face {
+    font-family: 'MyFont';
+    src: url("./VeraSeBd.ttf");
+    font-weight: 600;
+    font-style: normal;
+}
+
+.hello {
+    color: red;
+    font-family: 'MyFont';
+    /*
+        当使用 css-loader 时，你的 CSS 中的 url('./my-image.png') 会使用类似的过程去处理:
+        该图像将被处理并添加到 output 目录，并且 MyImage 变量将包含该图像在处理后的最终 url。
+        loader 会识别这是一个本地文件，并将 './my-image.png' 路径，替换为输出目录中图像的最终路径。
+    */
+    background: url('./icon.jpg') no-repeat;
+    background-size: 10px 10px;
+}
