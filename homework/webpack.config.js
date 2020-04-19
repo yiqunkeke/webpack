@@ -67,7 +67,9 @@ module.exports = {
     ],
     devtool: 'inline-source-map',
     devServer: {
+        // 告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件
         contentBase: path.resolve(__dirname, 'dist'),
-        hot: true // HMR
+        hot: true, // HMR - 允许在运行时更新各种模块，而无需进行完全刷新
+        hotOnly: true
     }
 }

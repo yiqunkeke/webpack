@@ -3,6 +3,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     // mode 的默认值就是 production
@@ -19,7 +20,9 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'), // contentBase 表示服务器启在哪个文件夹下
-        open: true
+        open: true,
+        hot: true, // 开启 HMR
+        hotOnly: true  // 即使 HMR 不生效，也不刷新浏览器
     },
     // 非 js 模块打包配置
     module: {
@@ -43,7 +46,7 @@ module.exports = {
             // css文件
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             },
             // scss 文件
             {
@@ -68,6 +71,20 @@ module.exports = {
                 use: {
                     loader: 'file-loader'
                 }
+            },
+            // babel
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: "babel-loader",
+                options: {
+                    "presets": ["@babel/preset-env"]
+                }
+                // options: {
+                //     "presets": [["@babel/preset-env", {
+                //         "useBuiltIns": "usage"
+                //       }]]
+                // }
             }
         ]
     },
@@ -75,7 +92,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin() // HMR
     ],
     output: {
         // publicPath: 'http://cdn.com.cn/',

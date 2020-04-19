@@ -76,5 +76,41 @@ var root = document.getElementById('root');
 root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 */
 
-// 8. sourceMap、webpack --watch、webpackDevServer、使用 webpack 的 compiler
-console.log('hello world! lijingke');
+// 8. sourceMap、webpack --watch、webpack-dev-Server、webpack-dev-middleware
+// console.log('hello world! lijingke!!!!');
+
+// 9. HMR - css
+// import './style.css';
+// var btn = document.createElement('button');
+// btn.innerHTML='新增';
+// document.body.appendChild(btn);
+
+// btn.onclick = function() {
+//     var div = document.createElement('div');
+//     div.innerHTML = 'item';
+//     document.body.appendChild(div);
+// }
+
+// 10. HMR - js
+// import counter from './counter';
+// import number from './number';
+// counter();
+// number();
+// // 如果开启了 HMR
+// if(module.hot){
+//     // 只要 number.js文件发生了改变， number 函数就会重新执行
+//     module.hot.accept('./number',()=>{
+//         document.body.removeChild(document.getElementById('number')); // 清除掉原来的 id 为 number 的节点
+//         number();
+//     })
+// }
+
+// 11. Babel - ES6 语法 
+import "@babel/polyfill";
+const arr = [
+    new Promise(()=>{}),
+    new Promise(()=>{})
+];
+arr.map(item => {
+    console.log(item);
+})
