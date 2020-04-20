@@ -80,11 +80,26 @@ module.exports = {
                 // options: {
                 //     "presets": ["@babel/preset-env"]
                 // }
-                options: {
-                    "presets": [["@babel/preset-env", {
-                        "useBuiltIns": "usage"
-                      }]]
-                }
+                // 下面的配置放到 .babelrc 
+                // options: {
+                //     // 业务代码打包
+                //     // "presets": [["@babel/preset-env", {
+                //     //     "targets": {
+                //     //         "chrome": "67"
+                //     //     },
+                //     //     "useBuiltIns": "usage"
+                //     //   }]]
+                //     // 第三方类库打包
+                //     // https://babeljs.io/docs/en/babel-plugin-transform-runtime
+                //     "plugins": [["@babel/plugin-transform-runtime", {
+                //         "absoluteRuntime": false,
+                //         "corejs": 2,
+                //         "helpers": true,
+                //         "regenerator": true,
+                //         "useESModules": false,
+                //         "version": "7.0.0-beta.0"
+                //       }]]
+                // }
             }
         ]
     },
