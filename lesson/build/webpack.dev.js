@@ -15,7 +15,7 @@ const devConfig = {
         new webpack.HotModuleReplacementPlugin() 
     ],
     optimization: {
-        usedExports: true
+        usedExports: true // Tree Shaking
     }
 }
 
