@@ -2,11 +2,14 @@
   "name": "lesson",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": false,
   "scripts": {
     "bundle": "webpack",
     "watch": "webpack --watch",
     "start": "webpack-dev-server",
-    "server": "node server.js"
+    "server": "node server.js",
+    "dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "build": "webpack --config ./build/webpack.prod.js"
   },
   "author": "",
   "license": "ISC",
@@ -31,12 +34,14 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@babel/runtime": "^7.9.2",
     "@babel/runtime-corejs2": "^7.9.2",
+    "core-js": "^2.6.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

@@ -116,15 +116,19 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // })
 
 // 12. Babel - react 语法
-import "@babel/polyfill";
+// import "@babel/polyfill";
 
-import React, {Component} from 'react';
-import ReactDom from 'react-dom';
+// import React, {Component} from 'react';
+// import ReactDom from 'react-dom';
 
-class App extends Component {
-    render() {
-        return <div>Hello World</div>
-    }
-}
+// class App extends Component {
+//     render() {
+//         return <div>Hello World</div>
+//     }
+// }
 
-ReactDom.render(<App/>, document.getElementById('root'));
+// ReactDom.render(<App/>, document.getElementById('root'));
+
+// 13. tree shaking
+import {add} from './math.js';
+add(1, 6);

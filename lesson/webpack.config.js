@@ -22,7 +22,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'), // contentBase 表示服务器启在哪个文件夹下
         open: true,
         hot: true, // 开启 HMR
-        hotOnly: true  // 即使 HMR 不生效，也不刷新浏览器
+        // hotOnly: true  // 即使 HMR 不生效，也不刷新浏览器
     },
     // 非 js 模块打包配置
     module: {
@@ -110,6 +110,10 @@ module.exports = {
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin() // HMR
     ],
+    // tree shaking
+    optimization: {
+        usedExports: true
+    },
     output: {
         // publicPath: 'http://cdn.com.cn/',
         filename: '[name].js',
