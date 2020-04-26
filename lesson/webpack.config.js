@@ -10,8 +10,10 @@ module.exports = {
     // 如果不配置 mode ，在打包时会发生警告。
     // 如果设置mode 为 production,则打包出的文件就会被压缩成一行。
     // 设置mode 为 development，则打包出来的文件就不会被压缩。
-    mode: 'development',
-    devtool: 'cheap-module-eval-source-map', // none source-map inline-source-map cheap-source-map cheap-module-source-map...
+    // mode: 'development',
+    mode: 'production',
+    // devtool: 'cheap-module-eval-source-map', // none source-map inline-source-map cheap-source-map cheap-module-source-map...
+    devtool: 'cheap-module-source-map',
     // 项目要从哪个文件开始打包
     // entry: './src/index.js',
     entry: {
@@ -111,9 +113,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin() // HMR
     ],
     // tree shaking
-    optimization: {
-        usedExports: true
-    },
+    // optimization: {
+    //     usedExports: true
+    // },
     output: {
         // publicPath: 'http://cdn.com.cn/',
         filename: '[name].js',

@@ -130,9 +130,9 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // ReactDom.render(<App/>, document.getElementById('root'));
 
 // 13. tree shaking 只支持ES Module
-// import {add} from './math.js';
-// add(1, 6);
+import {add} from './math.js';
+add(1, 6);
 
 // 14. Code Splitting 
-import _ from 'lodash';
-console.log(_.join(['a', 'b', 'c'], '***'));
+// import _ from 'lodash';
+// console.log(_.join(['a', 'b', 'c'], '***'));
