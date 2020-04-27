@@ -130,9 +130,20 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // ReactDom.render(<App/>, document.getElementById('root'));
 
 // 13. tree shaking 只支持ES Module
-import {add} from './math.js';
-add(1, 6);
+// import {add} from './math.js';
+// add(1, 6);
 
 // 14. Code Splitting 
+// 第一种方式
+// main.js 2MB ---不做 code splitting
+// 问题1：打包文件会很大，加载时间会长
+// 问题2： 重新访问页面，又要加载2MB的内容
 // import _ from 'lodash';
-// console.log(_.join(['a', 'b', 'c'], '***'));
+
+// 业务逻辑 1MB
+console.log(_.join(['a', 'b', 'c'], '***'));
+// 此处省略10万行业务逻辑
+console.log(_.join(['a', 'b', 'c'], '***'));
+
+//  第二种方式
+// 把 main.js 拆成了两个 js 文件，分别是 lodash.js（1MB） 和 main.js(1MB) 
