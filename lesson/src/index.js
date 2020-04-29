@@ -173,6 +173,36 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // import test from './test';
 // console.log(test.name);
 
-import jquery from 'jquery';
-import _ from 'lodash';
-console.log(_.join(['a', 'b', 'c'], '***'));
+// [cacheGroups]
+// import jquery from 'jquery';
+// import _ from 'lodash';
+// console.log(_.join(['a', 'b', 'c'], '***'));
+
+// 16. Lazy Loading 
+//  同步加载 
+// import _ from 'lodash';
+// var element = document.createElement('div');
+// element.innerHTML = _.join(['Dell', 'Lee'], '-');
+// document.body.appendChild(element);
+
+// 异步加载
+function getComponent() {
+    return import(/*webpackChunkName:"lodash"*/'lodash').then(({ default: _ }) => {
+        var element = document.createElement('div');
+        element.innerHTML = _.join(['Dell', 'Lee'], '-');
+        return element;
+    })
+}
+
+document.addEventListener('click',() => {
+    getComponent().then(element => {
+        document.body.appendChild(element);
+    })
+})
+
+/** 
+ *  上面同步---简洁
+ * 
+ *  下面异步加载的方式：
+ *      可以实现懒加载行为
+ *  */ 

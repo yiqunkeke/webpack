@@ -80,13 +80,13 @@ module.exports = {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/, // 模块是否满足在 node_modules 目录中
                     priority: -10, // 组优先级
-                    filename: 'vendors.js' // 分割生成文件名
+                    // filename: 'vendors.js' // 分割生成文件名
                 },
                 default: {
-                    minChunks: 1,
+                    // minChunks: 1,
                     priority: -20,
                     reuseExistingChunk: true, // 如果模块已经被打包过，则不会重复打包相同模块
-                    filename:'common.js'
+                    // filename:'common.js'
                 }
             }
         }
