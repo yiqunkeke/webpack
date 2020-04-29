@@ -66,8 +66,29 @@ module.exports = {
     ],
     optimization: {
         // Code Splitting
+        // splitChunksPlugin
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            // minSize: 30000, // 只有大于30KB的模块，在打包时才会做代码分割
+            minSize: 0, 
+            minChunks: 1, // 最少引用次数
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~', // 连接符
+            name: true, // 是否使用cacheGroups的组名来命名。默认以数字命名打包生成文件
+            cacheGroups: { // 缓存组
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/, // 模块是否满足在 node_modules 目录中
+                    priority: -10, // 组优先级
+                    filename: 'vendors.js' // 分割生成文件名
+                },
+                default: {
+                    minChunks: 1,
+                    priority: -20,
+                    reuseExistingChunk: true, // 如果模块已经被打包过，则不会重复打包相同模块
+                    filename:'common.js'
+                }
+            }
         }
     }
 }

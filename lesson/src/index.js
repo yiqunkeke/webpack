@@ -134,38 +134,45 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // add(1, 6);
 
 // 14. Code Splitting 
-
-// 第一种方式：不做代码分割
+// 14.1 不做代码分割
 // main.js 2MB
 // 问题1：打包文件会很大，加载时间会长
 // 问题2： 重新访问页面，又要加载2MB的内容
 // import _ from 'lodash';
-
 // 业务逻辑 1MB
 // console.log(_.join(['a', 'b', 'c'], '***'));
 // 此处省略10万行业务逻辑
 // console.log(_.join(['a', 'b', 'c'], '***'));
 
-//  第二种方式：手动代码分割 vs webpack中配置代码分割
+// 14.2 手动代码分割 vs webpack中配置代码分割
 // 把 main.js 拆成了两个 js 文件，分别是 lodash.js（1MB） 和 main.js(1MB) 
 
-// 第三种方式： 在 webpack 中另一种方式进行代码分割
-function getComponent() {
-    // 异步加载 lodash 模块
-    // 引入的 lodash 库会被放到 _ 这个变量中
-    return import('lodash').then(({ default: _ }) => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['Dell', 'Lee'], '-');
-        return element;
-    })
-}
+// 14.3 在 webpack 中另一种方式进行代码分割
+// function getComponent() {
+//     // 异步加载 lodash 模块
+//     // 引入的 lodash 库会被放到 _ 这个变量中
+//     return import('lodash').then(({ default: _ }) => {
+//         var element = document.createElement('div');
+//         element.innerHTML = _.join(['Dell', 'Lee'], '-');
+//         return element;
+//     })
+// }
 // 我们定义了一个函数，这个函数会异步加载 lodash 组件，当加载成功之后
 // 它会创建一个div 标签，内容是 Dell-Lee，然后把 div 标签返回回来
-
-getComponent().then(element => {
-    document.body.appendChild(element);
-})
+// getComponent().then(element => {
+//     document.body.appendChild(element);
+// })
 // 调用 getComponent() 异步获取 lodash 库，
 // 获取到之后创建一个 element 返回回来
 // 返回回来 then() 方法就能接收到这个 element
 // 然后把这个 element 挂载到页面上
+
+// 15. splitChunksPlugin 
+// [minSize]
+// 这个test模块非常小，连1KB都不到
+// import test from './test';
+// console.log(test.name);
+
+import jquery from 'jquery';
+import _ from 'lodash';
+console.log(_.join(['a', 'b', 'c'], '***'));
