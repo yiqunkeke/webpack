@@ -82,12 +82,13 @@ module.exports = {
                     priority: -10, // 组优先级
                     // filename: 'vendors.js' // 分割生成文件名
                 },
-                default: {
-                    // minChunks: 1,
-                    priority: -20,
-                    reuseExistingChunk: true, // 如果模块已经被打包过，则不会重复打包相同模块
-                    // filename:'common.js'
-                }
+                // default: {
+                //     // minChunks: 1,
+                //     priority: -20,
+                //     reuseExistingChunk: true, // 如果模块已经被打包过，则不会重复打包相同模块
+                //     // filename:'common.js'
+                // }
+                default: false
             }
         }
     }
