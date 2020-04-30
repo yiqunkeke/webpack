@@ -179,30 +179,27 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 // console.log(_.join(['a', 'b', 'c'], '***'));
 
 // 16. Lazy Loading 
-//  同步加载 
+//  同步加载  ---简洁
 // import _ from 'lodash';
 // var element = document.createElement('div');
 // element.innerHTML = _.join(['Dell', 'Lee'], '-');
 // document.body.appendChild(element);
 
-// 异步加载
-function getComponent() {
-    return import(/*webpackChunkName:"lodash"*/'lodash').then(({ default: _ }) => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['Dell', 'Lee'], '-');
-        return element;
-    })
-}
+// 异步加载  --- 实现懒加载行为
+// function getComponent() {
+//     return import(/*webpackChunkName:"lodash"*/'lodash').then(({ default: _ }) => {
+//         var element = document.createElement('div');
+//         element.innerHTML = _.join(['Dell', 'Lee'], '-');
+//         return element;
+//     })
+// }
 
-document.addEventListener('click',() => {
-    getComponent().then(element => {
-        document.body.appendChild(element);
-    })
-})
+// document.addEventListener('click',() => {
+//     getComponent().then(element => {
+//         document.body.appendChild(element);
+//     })
+// })
 
-/** 
- *  上面同步---简洁
- * 
- *  下面异步加载的方式：
- *      可以实现懒加载行为
- *  */ 
+// 17. css分割（提取）----MiniCssExtractPlugin
+import './style1.css'
+console.log('Dell Lee');

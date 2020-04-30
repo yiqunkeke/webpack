@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
@@ -8,7 +9,8 @@ module.exports = {
         main: './src/index.js'
     },
     output: {
-        filename: '[name].js',
+        filename: '[name].[hash].js',
+        chunkFilename: '[name].chunk.js', // 非入口 chunk 的名称
         path: path.resolve(__dirname, '../dist')
     },
     module: {
@@ -28,12 +30,32 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader']
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // only enable hot in development
+                            hmr: process.env.NODE_ENV === 'development',
+                            // if hmr does not work, this is a forceful method.
+                            reloadAll: true,
+                        }
+                    }, 
+                    'css-loader', 
+                    'postcss-loader'
+                ]
             },
             {
                 test: /\.scss$/,
                 use: [
-                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // only enable hot in development
+                            hmr: process.env.NODE_ENV === 'development',
+                            // if hmr does not work, this is a forceful method.
+                            reloadAll: true,
+                        }
+                    },
                     {
                         loader: 'css-loader',
                         options: {
@@ -63,14 +85,17 @@ module.exports = {
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
+        })
     ],
     optimization: {
         // Code Splitting
         // splitChunksPlugin
         splitChunks: {
             chunks: 'all',
-            // minSize: 30000, // 只有大于30KB的模块，在打包时才会做代码分割
-            minSize: 0, 
+            minSize: 30000, // 只有大于30KB的模块，在打包时才会做代码分割
+            // minSize: 0, 
             minChunks: 1, // 最少引用次数
             maxAsyncRequests: 5,
             maxInitialRequests: 3,
