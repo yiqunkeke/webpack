@@ -200,6 +200,22 @@ root.innerHTML = '<div class="iconfont icon-bussiness-man"></div>';
 //     })
 // })
 
-// 17. css分割（提取）----MiniCssExtractPlugin
+// 17. chunkFilename
+// function getComponent() {
+//     return import(/*webpackChunkName:"lodash"*/'lodash').then(({ default: _ }) => {
+//         var element = document.createElement('div');
+//         element.innerHTML = _.join(['Dell', 'Lee'], '-');
+//         return element;
+//     })
+// }
+// document.addEventListener('click',() => {
+//     getComponent().then(element => {
+//         document.body.appendChild(element);
+//     })
+// })
+
+// 18. css分割（提取）----MiniCssExtractPlugin
 import './style1.css'
+import './style2.css'
 console.log('Dell Lee');
+// 默认会把 style1.css 和 style2.css 文件中的样式合并到一起

@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
         // lodash: './src/lodash.js',
-        main: './src/index.js'
+        main: './src/index.js',
+        main1: './src/index1.js'
     },
     output: {
         filename: '[name].[hash].js',
@@ -29,45 +29,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // only enable hot in development
-                            hmr: process.env.NODE_ENV === 'development',
-                            // if hmr does not work, this is a forceful method.
-                            reloadAll: true,
-                        }
-                    }, 
-                    'css-loader', 
-                    'postcss-loader'
-                ]
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // only enable hot in development
-                            hmr: process.env.NODE_ENV === 'development',
-                            // if hmr does not work, this is a forceful method.
-                            reloadAll: true,
-                        }
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 2,
-                            modules: false
-                        }
-                    },
-                    'postcss-loader',
-                    'sass-loader'
-                    ]
-            },
-            {
                 test: /\.(eot|ttf|svg|woff)$/,
                 use: {
                     loader: 'file-loader'
@@ -84,12 +45,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        })
+        new CleanWebpackPlugin()
     ],
     optimization: {
+        // Tree Shaking
+        usedExports: true, 
         // Code Splitting
         // splitChunksPlugin
         splitChunks: {
