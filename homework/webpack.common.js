@@ -1,20 +1,34 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+var Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.js',
-    // entry: {
-    //     app: './src/index.js',
-    //     print: './src/print.js'
-    // },
+    entry: {
+        index: './src/index.js',
+        // another: './src/another-module.js'
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Cashing'
+        }),
+        new CleanWebpackPlugin(),
+        // This will output a file named statistics.html in your output directory.
+        new Visualizer({
+            filename: './statistics.html'
+        })
+    ],
     output: {
-        // filename: 'bundle.js',
         filename: '[name].[hash:8].bundle.js',
+        chunkFilename: '[name].chunk.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
+    },
+    optimization: {
+        usedExports: true, // tree shaking
+        splitChunks: { // code splitting
+            chunks: 'all'
+        }
     },
     module: {
         rules: [
@@ -54,26 +68,12 @@ module.exports = {
                 use: [
                     'xml-loader'
                 ]
+            },
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: "babel-loader" 
             }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Output Management'
-        }),
-        new CleanWebpackPlugin(),
-        // 添加了 NamedModulesPlugin，以便更容易查看要修补(patch)的依赖
-        new webpack.NamedModulesPlugin(), 
-        new webpack.HotModuleReplacementPlugin()
-    ],
-    devtool: 'inline-source-map',
-    devServer: {
-        // 告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件
-        contentBase: path.resolve(__dirname, 'dist'),
-        hot: true, // HMR - 允许在运行时更新各种模块，而无需进行完全刷新
-        // hotOnly: true
-    },
-    optimization: {
-        usedExports: true // tree shaking
     }
 }
